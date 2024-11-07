@@ -16,9 +16,13 @@ export default function DashBoard() {
 
 const GetResumesList=()=>{
   GlovalApi.GetUserResumes(user?.primaryEmailAddress?.emailAddress)
+  
   .then(resp=>{
+    console.log(resp.data.data);
+    
     setResumeList(resp.data.data);
   })
+
 }
   return (
     <div className="p-10 md:px-20 lg:px-32">
@@ -26,7 +30,9 @@ const GetResumesList=()=>{
       <p>Start Crating Ai Resume For Your Next Job Role</p>
       <div className="grid grid-cols-2 gap-5 mt-10 md:grid-cols-3 lg:grid-cols-5 ">
         <AddResume/>
-        {resumeList && resumeList.map((resume, index) => <ResumeCardItem resume={resume} key={index}/> )}
+        {resumeList && resumeList.map((resume, index) => <ResumeCardItem refreshData={GetResumesList} resume={resume} key={index}/> )}
+        
+        
       </div>
     </div>
   )

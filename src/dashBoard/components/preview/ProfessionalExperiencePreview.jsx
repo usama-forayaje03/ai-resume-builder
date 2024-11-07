@@ -12,11 +12,13 @@ export default function ProfessionalExperiencePreview({resumeInfo}) {
                 <h2 className="flex justify-between text-xs">
                     {exper?.companyName}, 
                     {exper?.city}, 
-                    {exper.state},
-                    <span>{exper.startDate} {exper?.currentlyWorking?'Present':exper.endDate}</span>
+                    {exper?.state},
+                    <span>{exper.startDate} To {exper?.currentlyWorking?'Present':exper.endDate}</span>
 
                 </h2>
-                <p className="my-2 text-xs">{exper.workSummery}</p>
+
+                {/* <p className="my-2 text-xs">{exper.workSummery}</p> */}
+                <div dangerouslySetInnerHTML={{__html: exper?.workSummery}} />
             </div>
         ))
       }
